@@ -10,6 +10,9 @@ export class CourseCardComponent implements OnInit {
 
   @Input()
   course:Course;
+
+  @Input()
+  cardIndex:number;
   
   @Output('courseSelected')
   courseEmitter = new EventEmitter<Course>();
@@ -24,4 +27,13 @@ export class CourseCardComponent implements OnInit {
     this.courseEmitter.emit(this.course);
   }
 
+  isImageVisible(){
+    return this.course && this.course.iconUrl;
+  }
+
+  cardClasses(){
+    if (this.course.category == 'BEGINNER'){
+      return ['beginner'];
+    }
+  }
 }
